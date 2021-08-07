@@ -1,0 +1,138 @@
+/* Root Variables */
+:root{
+  --spriteX: 45%;
+  --spriteY: 80%;
+  --spriteImage: url('../../assets/sprites/hero/back.png')
+}
+
+body{
+  background: url('https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/bojnice-castle-1603142898.jpg');
+  background-size: cover;
+}
+
+/* Central syling */
+.map-container{
+  display: flex;
+  justify-content: center;
+}
+
+.messages{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background-color: rgba(0, 0, 0, .5);
+  width: 25vw;
+  position: relative;
+  padding: 1% 1% 1% 2%;
+  color: whitesmoke;
+}
+
+.messages__header{
+  font-size: 2rem;
+  font-weight: 200;
+  margin: 0;
+}
+
+.messages__detail{
+  height: 50%;
+  overflow: auto;
+  font-size: .8125rem;
+}
+
+.messages__detail * {
+  margin-top: 0;
+}
+
+.messages__hero-image{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 70%;
+}
+
+.map {
+  background-image: url('../../assets/sprites/stage/castle.png');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 36vw;
+  height: 70vh;
+  position: relative;
+}
+
+.hero-sprite{
+  height: 6vh;
+  width: 6vh;
+  background: var(--spriteImage);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: var(--spriteY);
+  left: var(--spriteX);
+}
+
+.hero-icon{
+  position: absolute;
+  height: 2.5vh;
+  width: 2.5vh;
+  background-color: whitesmoke;
+  top: -3vh;
+  left: 1.8vh;
+  border: 1px solid rgba(0, 0, 0, .5);
+  border-radius: 4px;
+  text-align: center;
+  padding-left: 3px;
+  display: none;
+}
+
+.hero-icon.--active{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.controls{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: whitesmoke;
+  background-color: rgba(0, 0, 0, .5);
+  width: 20vw;
+}
+
+.controls__heading{
+  margin: 0 0 8px;
+}
+
+.controls__left-to-right{
+  display: flex;
+}
+
+.controls__key{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 3px;
+  border: 1px solid whitesmoke;
+  width: 2vw;
+  height: 2vw;
+  margin: 4px;
+  border-radius: 2px;
+  box-shadow: 4px 4px 2px rgba(255, 255, 255, .25);
+  transform: translate(-4px,-4px);
+  transition: all .2s ease-in;
+}
+
+.controls__key.--space{
+  width: 60%;
+  font-weight: 200;
+  font-size: .7125rem;
+}
+
+.controls__key.--active{
+  transform: translate(0px,0px);
+  box-shadow: none;
+}

@@ -1,0 +1,272 @@
+body{
+  background: url('https://images.unsplash.com/photo-1586962316657-ff64c26330bc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=889&q=80');
+  background-size: cover;
+}
+
+.battleground {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 0 0 3%;
+}
+
+.game-over {
+  height: 40vh;
+  width: 40vw;
+  position: absolute;
+  top: 25%;
+  background-color: var(--modal-color);
+  box-shadow: var(--modal-shadow);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Enemy Styling */
+
+.enemy {
+  width: 43%;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--modal-color);
+  box-shadow: var(--modal-shadow);
+}
+
+.enemy__health{
+  width: 80%;
+  height: 20px;
+  display: flex;
+  margin-top: 3%;
+}
+
+.enemy__health-bar{
+  width: var(--health-val);
+  height:20px;
+  border: 2px solid black;
+  background-color: var(--health-color);
+}
+
+.enemy__wizard {
+  flex-grow: .1;
+  font-size: 2rem;
+  margin-bottom: 0;
+  animation-name: enemy-shake;
+  animation-timing-function: linear;
+  animation-duration: 1s;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+}
+
+.enemy__monsters {
+  flex-grow: .9;
+  font-size: 2rem;
+  padding: 2% 4%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.monster-icon{
+  display: inline-block;
+  margin: 0;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.monster-icon:hover{
+  cursor: pointer;
+}
+
+.--monster-icon-1{
+  animation-name: enemy-hop;
+  animation-duration: .5s;
+}
+.--monster-icon-2{
+  animation-name: enemy-hop-2;
+  animation-duration: 1s;
+}
+.--monster-icon-3{
+  animation-name: enemy-hop-3;
+  animation-duration: 2s;
+}
+.--monster-icon-4{
+  animation-name: enemy-hop-4;
+  animation-duration: 4s;
+}
+.--monster-icon-5{
+  animation-name: enemy-hop-5;
+  animation-duration: 5s;
+}
+.--monster-icon-6{
+  animation-name: enemy-hop-6;
+  animation-duration: 6s;
+}
+.--monster-icon-7{
+  animation-name: enemy-hop-7;
+  animation-duration: 7s;
+}
+
+.monster-icon:hover::after{
+  display: flex;
+  position: absolute;
+  top: -180%;
+  left: -125%;
+  background-color: aliceblue;
+  overflow: hidden;
+  font-size: .6rem;
+  padding: 10% 20%;
+  border: 1px solid black
+}
+
+.--monster-icon-T-Rex::after{
+  display: none;
+  content: "{name:'T-Rex',icon: '🦖',level: 10,canFly: false,weakness: 'comets',hasBarrier: false}";
+}
+.--monster-icon-Kraken::after{
+  display: none;
+  content: "{name:'Kraken', icon: '🐙', level: 8, canFly: false, weakness: 'lightning', hasBarrier: false}";
+}
+.--monster-icon-Scorpion::after{
+  display: none;
+  content: "{name:'Scorpion', icon: '🦂', level: 2, canFly: false, weakness: 'birds', hasBarrier: false  }";}
+.--monster-icon-Zombie::after{
+  display: none;
+  content: "{name:'Zombie',icon: '🧟‍♂️', level: 4, canFly: false, weakness: 'brains', hasBarrier: false}";
+}
+.--monster-icon-Giant-Eagle::after{
+  display: none;
+  content: "{name:'Giant-Eagle', icon: '🦅', level: 6, canFly: true, weakness: 'arrows', hasBarrier: false}";
+}
+.--monster-icon-Alien::after{
+  display: none;
+  content: "{name:'Alien', icon: '👾', level: 7, canFly: false, weakness: 'magic', hasBarrier: true}";
+}
+.--monster-icon-Demon-Bat::after{
+  display: none;
+  content: "{name:'Demon-Bat', icon: '🦇', level: 5, canFly: true, weakness: 'sunlight', hasBarrier: false}";
+}
+.--monster-icon-Vampire::after{
+  display: none;
+  content: "{name:'Vampire', icon: '🧛‍♂️', level: 7, canFly: false, weakness: 'fire', hasBarrier: false}";
+}
+.--monster-icon-GrandDragon::after{
+  display: none;
+  content: "{name:'GrandDragon', icon: '🐉', level: 9, canFly: false, weakness: 'ice', hasBarrier: false}";
+}
+.--monster-icon-Ghoul::after{
+  display: none;
+  content: "{name:'Ghoul', icon: '👻', level: 5, canFly: false, weakness: 'sunlight', hasBarrier: true}";
+}
+.--monster-icon-Sabretooth::after{
+  display: none;
+  content: "{name:'Sabretooth', icon: '🐅', level: 10, canFly: false,weakness: 'bellyrubs', hasBarrier: false}";
+}
+
+.enemy-data{
+  width: 40%;
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  background-color: var(--modal-color);
+  box-shadow: var(--modal-shadow);
+  overflow-y: scroll;
+}
+
+.enemy-data__content {
+  font-size: 1rem;
+}
+
+/* Battle Log Styling */
+
+.battle-log {
+  width: 70%;
+  height: 45vh;
+  border: 2px solid black;
+  background-color: var(--modal-color);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 2% 4%;
+}
+
+.battle-log__status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 30%;
+}
+
+.battle-log__turn{
+  margin: 0;
+}
+
+.battle-log__name {
+  margin-bottom: 0;
+}
+
+.battle-log__challenge-wrapper{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.battle-log__challenge {
+  width: 85%;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: .8125rem;
+  border: 2px solid black;
+  background-color: black;
+  color: white;
+  line-height: 2rem;
+  margin: 0;
+  max-height: 190px;
+}
+
+.battle-log__challenge input {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: .8125rem;
+  width: 100%;
+}
+
+.battle-log__challenge textarea {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: .8125rem;
+  width: 100%;
+  resize: none;
+}
+
+.battle-log__challenge textarea.--error{
+  animation-name: error-pulse;
+  animation-timing-function: linear;
+  animation-duration: 1s;
+  background-color: white;
+}
+
+.battle-log__challenge input.--error{
+  animation-name: error-pulse;
+  animation-timing-function: linear;
+  animation-duration: 1s;
+  background-color: white;
+}
+
+.battle-log__challenge input.--small{
+  width: fit-content;
+}
+
+/* Footer Styling */
+
+.hero-image{
+  height: 40vh;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}

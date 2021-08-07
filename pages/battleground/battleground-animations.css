@@ -1,0 +1,37 @@
+@keyframes enemy-shake {
+  0% {transform: rotate(0deg)}
+  25% {transform: rotate(15deg)}
+  50% {transform: rotate(0deg)}
+  75% {transform: rotate(-15deg)}
+  100% {transform: rotate(0deg)}
+}
+
+@keyframes enemy-hop {
+  0% {transform: translateY(0)}
+  50% {transform: translateY(-5px)}
+  100% {transform: translateY(0)}
+}
+
+@keyframes enemy-hop-2 {
+  0% {transform: translateY(0)}
+  25% {transform: translateY(-5px)}
+  100% {transform: translateY(0)}
+}
+
+@keyframes enemy-hop-3 {
+  0% {transform: translateY(0)}
+  12.5% {transform: translateY(-5px)}
+  100% {transform: translateY(0)}
+}
+
+@keyframes enemy-hop-4 {
+  0% {transform: translateY(0)}
+  6.25% {transform: translateY(-5px)}
+  100% {transform: translateY(0)}
+}
+
+@keyframes error-pulse {
+  0% {background-color: white}
+  50% {background-color: red}
+  100% {background-color: white}
+}

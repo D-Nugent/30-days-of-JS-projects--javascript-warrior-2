@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../globalStyles.css">
+  <link rel="stylesheet" href="./battleground-animations.css">
+  <link rel="stylesheet" href="./battleground.css">
+  <title>Javascript W[arr]ior ⚔</title>
+</head>
+<body>
+  <header>
+    <button class="audio-toggle">🔈</button>
+    <h1 class="primary-header">
+      Javascript W<span class="arr-emph">[arr]</span>ior ⚔
+    </h1>
+  </header>
+  <main class="battleground">
+    <section class="enemy">
+      <div class="enemy__health">
+        Health: <span class="enemy__health-bar"></span>
+      </div>
+      <h2 class="enemy__wizard">🧙‍♂️</h2>
+      <article class="enemy__monsters">
+      </article>
+    </section>
+    <section class="enemy-data">
+      <p class="enemy-data__content">
+      </p>
+    </section>
+    <img class="hero-image" src="../../assets/images/knight.png" alt="hero">
+    <article class="battle-log">
+      <div class="battle-log__status">
+        <h4 class="battle-log__turn">
+          Turn <span class="battle-log__turn-no">1</span>/11
+        </h4>
+        <div class="battle-log__health">💖💖💖💖🖤</div>
+      </div>
+      <h2 class="battle-log__name"><span class="arr-emph">[arr]</span>thur:</h2>
+      <div class="battle-log__attack">
+        <p class="battle-log__msg"></p>
+        <div class="battle-log__challenge-wrapper">
+          <p class="battle-log__challenge"></p>
+          <button class="battle-log__submit primary-btn">Submit</button>
+        </div>
+      </div>
+    </article>
+    <aside class="game-over">
+      <h2>Game Over</h2>
+      <a class="primary-btn" href="../warBegins/warBegins.html">Retry?</a>
+    </aside>
+  </main>
+  <audio src="../../assets/audio/bensound-evolution.mp3" loop></audio>
+  <script src="../../utils/audioControl.js"></script>
+  <script src="../../assets/data/monster.js"></script>
+  <script src="../../assets/data/challenge.js"></script>
+  <script src="./battleground.js"></script>
+</body>
+</html>

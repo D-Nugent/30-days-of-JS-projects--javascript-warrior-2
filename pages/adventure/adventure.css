@@ -2,7 +2,8 @@
 :root{
   --spriteX: 45%;
   --spriteY: 80%;
-  --spriteImage: url('../../assets/sprites/hero/back.png')
+  --spriteImage: url('../../assets/sprites/hero/back.png');
+  --mapBrightness: 1
 }
 
 body{
@@ -56,9 +57,56 @@ body{
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  width: 36vw;
-  height: 70vh;
+  width: 460px;
+  height: 560px;
   position: relative;
+  filter: brightness(var(--mapBrightness));
+  transition: filter 1s ease-in;
+  /* filter: opacity(100%); */
+  /* filter: hue-rotate(350deg); */
+}
+
+.door{
+  position: absolute;
+  height: 9.5%;
+  width: 13%;
+  top: 3.5%;
+  left: 12%;
+  opacity: 0;
+  display: none;
+  transition: opacity 1s ease-in;
+}
+
+.candle{
+  position: absolute;
+  height: 6%;
+  width: 5.5%;
+  opacity: 1;
+  transition: opacity 1s ease-in;
+}
+
+.candle__one{
+  top: 3.6%;
+  left: 35%;
+  opacity: 0;
+}
+
+.candle__two{
+  top: 4%;
+  left: 74%;
+  opacity: 0;
+}
+
+.candle__three{
+  top: 37%;
+  left: 16.5%;
+  opacity: 0;
+}
+
+.candle__four{
+  top: 37%;
+  left: 78.5%;
+  opacity: 0;
 }
 
 .hero-sprite{
@@ -69,6 +117,8 @@ body{
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
+  /* transform: translateX(var(--spriteX)) translateY(var(--spriteY)); */
+  transition: all .2s ease-in;
   top: var(--spriteY);
   left: var(--spriteX);
 }

@@ -72,3 +72,50 @@ const challengeData = [
     sol: (curMonsters) => JSON.stringify(curMonsters.length=0)
   },
 ]
+
+const bossChallengeData = [
+  `<code class="challenge-code">let bossDataAsArray = <input disabled/>.<input disabled/>(bossData)</code>
+    <button class="fail-advance primary-btn">object.entries</button>
+    <button class="fail-advance primary-btn">object.array</button>
+    <button class="dialog-advance primary-btn">Object.entries</button>
+    <button class="fail-advance primary-btn">entries.object</button>
+  `,
+  `<code class="challenge-code">Object.<input disabled>(bossData.map(keypair => {<br>if(keypair[<input class="--small" disabled/>] === 'hasBarrier') keypair[1] = false;<br>return keypair<br>}))</code>
+    <button class="fail-advance primary-btn">'map' and 'hasBarrier'</button>
+    <button class="dialog-advance primary-btn">'fromEntries' and '0'</button>
+    <button class="fail-advance primary-btn">'fromEntries' and 'barrier'</button>
+    <button class="fail-advance primary-btn">'entries' and '0'</button>
+  `,
+  `<code class="challenge-code">let poison = {<br>status:'poison'<br>}<br>Object.<input disabled>(<input disabled>,<input disabled>)</code>
+    <button class="fail-advance primary-btn">'bossData', 'assign' & 'poison'</button>
+    <button class="fail-advance primary-btn">'Assign', 'bossData' & 'poison'</button>
+    <button class="fail-advance primary-btn">'assign', 'poison' & 'bossData'</button>
+    <button class="dialog-advance primary-btn">'assign', 'bossData' & 'poison'</button>
+  `,
+  `<code class="challenge-code">Object<input class="--large" disabled></code>
+    <button class="fail-advance primary-btn">'.bossData(isFrozen)'</button>
+    <button class="fail-advance primary-btn">'(bossData) === typeof 'frozen''</button>
+    <button class="fail-advance primary-btn">'.freeze(bossData)'</button>
+    <button class="dialog-advance primary-btn">'.isFrozen(bossData)'</button>
+  `,
+  `<code class="challenge-code">bossData = <input disabled><br><input disabled> <input disabled>.powerLevel</code>
+    <button class="fail-advance primary-btn">'Object.create(bossData), 'bossData' & 'delete'</button>
+    <button class="dialog-advance primary-btn">'{...bossData}', 'delete' & 'bossData'</button>
+    <button class="fail-advance primary-btn">'[...bossData]', 'delete' & 'bossData'</button>
+    <button class="fail-advance primary-btn">'bossData', 'delete' & 'bossData'</button>
+  `,
+  `<code class="challenge-code">for (const key in <input disabled>) {<br>if(key === 'canFly') bossData[<input disabled/>] = false;<br>if(<input disabled/> === 'level') bossData[key] -= 30;}</code>
+    <button class="fail-advance primary-btn">'Object(bossData)', 'level' & 'key'</button>
+    <button class="fail-advance primary-btn">'{...bossData}', 'canFly' & 'level'</button>
+    <button class="dialog-advance primary-btn">'bossData', 'key' & 'key'</button>
+    <button class="fail-advance primary-btn">'bossData', '[canFly]' & 'key'</button>
+  `,
+  `<code class="challenge-code">function inferno(){<br>this.level -= Math.floor(Math.random()*4)<br>}<br>bossData.infernoAttack = <input disabled/>;<br>while(bossData.level><input class="--small" disabled>) {<br>bossData.<input disabled/>()<br>}</code>
+    <button class="fail-advance primary-btn">'inferno', '=1' & 'infernoAttack'</button>
+    <button class="dialog-advance primary-btn">'inferno', '0' & 'infernoAttack'</button>
+    <button class="fail-advance primary-btn">'infernoAttack', '0' & 'inferno'</button>
+    <button class="fail-advance primary-btn">'inferno', '=0' & 'inferno'</button>
+  `,
+  `<h4>Your attack is super effective!</h4>
+  `,
+]

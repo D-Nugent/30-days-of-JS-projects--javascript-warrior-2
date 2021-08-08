@@ -16,3 +16,14 @@ let characterConfig = {
   rightStep2: `url('../../assets/sprites/hero/right-step-2.png')`,
   rightTurn: `url('../../assets/sprites/hero/right-turn.png')`,
 }
+
+let villainConfig = {
+  currentSprite: `url('../../assets/sprites/villain/back.png')`,
+  direction: 'up',
+  front: `url('../../assets/sprites/villain/front.png')`,
+  back: `url('../../assets/sprites/villain/back.png')`,
+  frontArmsOpen:`url('../../assets/sprites/villain/front-arms-open.png')`,
+  left:`url('../../assets/sprites/villain/left.png')`,
+  turnLeft:`url('../../assets/sprites/villain/turn-left.png')`,
+  turnFront:`url('../../assets/sprites/villain/turn-front.png')`
+}

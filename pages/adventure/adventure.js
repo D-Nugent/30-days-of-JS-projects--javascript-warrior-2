@@ -1,6 +1,8 @@
 const documentRoot = document.documentElement;
-const getYAxis = () => window.getComputedStyle(documentRoot).getPropertyValue('--spriteY');
-const getXAxis = () => window.getComputedStyle(documentRoot).getPropertyValue('--spriteX');
+const getYAxis = () => window.getComputedStyle(documentRoot).getPropertyValue('--spriteY').trim();
+const getXAxis = () => window.getComputedStyle(documentRoot).getPropertyValue('--spriteX').trim();
+const getSprite = () => window.getComputedStyle(documentRoot).getPropertyValue('--spriteImage').trim();
+const getBrightness = () => window.getComputedStyle(documentRoot).getPropertyValue('--mapBrightness').trim();
 
 let moving = false;
 
@@ -23,6 +25,14 @@ const checkIfPathBlocked = (x, y,direction) => {
   return blockedCoord[direction].some(axis => {
     return axis[0] === x && axis[1] === y
   })
+};
+
+const checkIfNewScene = (x,y) => {
+  if (((x === '10%'||x === '15%') && y === '10%')) {
+    document.documentElement.style.setProperty('--mapBrightness',0)
+    setTimeout(() => window.location.href = '../bossFight/bossFight.html', 1000);
+  }
+  
 }
 
 const moveControl = {
@@ -36,9 +46,10 @@ const moveControl = {
     if (moving == true) return;
     moving = true;
     documentRoot.style.setProperty('--spriteY',`${Number(y.slice(0,y.indexOf('%')))-5}%`); // up arrow
-    setTimeout(() => moving = false, 100);
+    setTimeout(() => moving = false, 150);
+    checkIfNewScene(x,y);
   },
-  39:({x,y}) => {
+  39:({x,y}) => { // right arrow
     let pathBlocked = checkIfPathBlocked(x,y,'right');
     if(characterConfig.direction!=='right') documentRoot.style.setProperty('--spriteImage',characterConfig.right);
     characterConfig.direction = 'right';
@@ -47,31 +58,28 @@ const moveControl = {
     if (pathBlocked) return;
     if (moving == true) return;
     moving = true;
-    documentRoot.style.setProperty('--spriteX',`${Number(x.slice(0,x.indexOf('%')))+5}%`); // right arrow
-    setTimeout(() => documentRoot.style.setProperty('--spriteImage',characterConfig.rightStep), 100);
-    setTimeout(() => documentRoot.style.setProperty('--spriteImage',characterConfig.rightStep1), 200);
+    documentRoot.style.setProperty('--spriteX',`${Number(x.slice(0,x.indexOf('%')))+5}%`);
+    setTimeout(() => documentRoot.style.setProperty('--spriteImage',characterConfig.rightStep), 50);
+    setTimeout(() => documentRoot.style.setProperty('--spriteImage',characterConfig.rightStep1), 100);
     setTimeout(() => {
       documentRoot.style.setProperty('--spriteImage',characterConfig.rightStep2);
       moving=false
-    }, 300);
+    }, 150);
   },
-  40:({x,y}) => {
-    console.log(x,y);
+  40:({x,y}) => { // down arrow
     let pathBlocked = checkIfPathBlocked(x,y,'down');
-    documentRoot.style.setProperty('--spriteImage',characterConfig.front)
+    if (getSprite() !== characterConfig.front) documentRoot.style.setProperty('--spriteImage',characterConfig.front)
     characterConfig.direction = 'down'
     controls.down.classList.add('--active');
     if (pathBlocked) console.log('path is blocked with coords:',x,y)
-    if (pathBlocked) return;
-    if (moving == true) return;
+    if (pathBlocked || moving == true) return;
     moving = true;
-    documentRoot.style.setProperty('--spriteY',`${Number(y.slice(0,y.indexOf('%')))+5}%`); // down arrow
-    documentRoot.style.setProperty('--spriteImage',characterConfig.frontStep1);
-    setTimeout(() => documentRoot.style.setProperty('--spriteImage',characterConfig.frontStep2), 100);
+    documentRoot.style.setProperty('--spriteY',`${Number(y.slice(0,y.indexOf('%')))+5}%`); 
+    setTimeout(() => documentRoot.style.setProperty('--spriteImage',characterConfig.frontStep1), 75);
     setTimeout(() => {
-      documentRoot.style.setProperty('--spriteImage',characterConfig.front)
+      documentRoot.style.setProperty('--spriteImage',characterConfig.frontStep2)
       moving=false;
-    }, 200);
+    }, 150);
   },
   37:({x,y}) => {
     let pathBlocked = checkIfPathBlocked(x,y,'left');
@@ -83,24 +91,25 @@ const moveControl = {
     if (moving == true) return;
     moving = true;
     documentRoot.style.setProperty('--spriteX',`${Number(x.slice(0,x.indexOf('%')))-5}%`); // left arrow
-    setTimeout(() => documentRoot.style.setProperty('--spriteImage',characterConfig.leftStep), 100);
-    setTimeout(() => documentRoot.style.setProperty('--spriteImage',characterConfig.leftStep1), 200);
+    setTimeout(() => documentRoot.style.setProperty('--spriteImage',characterConfig.leftStep), 50);
+    setTimeout(() => documentRoot.style.setProperty('--spriteImage',characterConfig.leftStep1), 100);
     setTimeout(() => {
       documentRoot.style.setProperty('--spriteImage',characterConfig.leftStep2)
       moving = false
-    }, 300);
+    }, 150);
   },
   32:({x,y}) => {
     controls.space.classList.add('--active');
-    if (!!loadedInteraction) loadedInteraction(x,y)
+    console.log(x,y);
+    if (!!loadedInteraction) loadedInteraction(x.slice(0,2))
   }
 }
 
 
 function moveCharacter(e){
   let axis = {
-    y: getYAxis().trim(),
-    x: getXAxis().trim()
+    y: getYAxis(),
+    x: getXAxis()
   }
   e.preventDefault();
   if(typeof moveControl[e.keyCode] == 'undefined') return;

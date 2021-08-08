@@ -320,3 +320,12 @@ let monsters = [
     hasBarrier: false
   },
 ]
+
+let bossData = {
+  level: 100,
+  canFly: true,
+  weakness: 'fire',
+  hasBarrier: true,
+  powerLevel: 0,
+  status: 'charging attack',
+}
